@@ -1,6 +1,20 @@
-# Challenge Problems: a worked example
+# Challenge Problems: a worked example II: now with more javascript!
 
-Talk given at [develop denver](https://developdenver.org/), August 6th 2015
+**!!! WARNING !!!
+
+This is very much a work in progress.
+Let's just assume that nothing here actually works until a week, min, before the
+date of the talk.
+
+!!!WARNING!!!**
+
+Talk to be given at 
+[coloradoSprings.js](http://www.meetup.com/coloradospringsjs/events/224113952/),
+Septemeber 23, 2015.
+
+Forked from and based on my
+[talk](https://github.com/drewhutchison/dvlp2015) given at
+[develop denver](https://developdenver.org/), August 6th 2015
 
 ## Problemsets
 
