@@ -94,7 +94,6 @@ def fncmp(a, b):
              listify(b))
 
 def allslides():
-  print glob(join(SRC_PATH, "slide*.html"))
   return sorted(glob(join(SRC_PATH, "slide*.html")), fncmp)
 
 if __name__ == '__main__':
