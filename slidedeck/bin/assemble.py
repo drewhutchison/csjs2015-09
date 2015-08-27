@@ -93,12 +93,17 @@ def fncmp(a, b):
   return cmp(listify(a),
              listify(b))
 
-with open(join(SLIDES_PATH, 'index.html'), 'w') as outfile:
+def allslides():
+  print glob(join(SRC_PATH, "slide*.html"))
+  return sorted(glob(join(SRC_PATH, "slide*.html")), fncmp)
 
-  copy(join(SRC_PATH, 'head.html'))
+if __name__ == '__main__':
+  with open(join(SLIDES_PATH, 'index.html'), 'w') as outfile:
 
-  for slidefile in sorted(glob(join(SRC_PATH, "slide*.html")), fncmp):
-    copy(slidefile)
+    copy(join(SRC_PATH, 'head.html'))
 
-  copy(join(SRC_PATH, 'tail.html'))
+    for slidefile in allslides():
+      copy(slidefile)
+
+    copy(join(SRC_PATH, 'tail.html'))
 
