@@ -3,13 +3,17 @@
 from os.path import dirname, realpath, abspath, join
 from os import chdir, getcwd
 from glob import glob
-from re import search
+from re import compile
 from subprocess import check_output
 
 ROOT_PATH = abspath(join(dirname(realpath(__file__)), '../..'))
 SLIDES_PATH = join(ROOT_PATH, 'slidedeck')
 SRC_PATH = join(SLIDES_PATH, 'src')
 CODE_PATH = abspath(join(ROOT_PATH, 'code'))
+
+LISTING_RE = compile(r'\$LIST\((.+)\)')
+EXEC_RE = compile(r'\$EXEC\((.+)\)')
+
 
 def copy(infn):
   print 'copying ' + infn
@@ -21,11 +25,11 @@ def copy(infn):
 
 def do_macro(line):
 
-  m = search('\$LIST\((.+)\)', line)
+  m = LISTING_RE.search(line)
   if m:
     return do_list(m.groups()[0])
 
-  m = search('\$EXEC\((.+)\)', line)
+  m = EXEC_RE.search(line)
   if m:
     return do_exec(m.groups()[0])
 
