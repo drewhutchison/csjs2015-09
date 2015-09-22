@@ -13,7 +13,8 @@ CODE_PATH = abspath(join(ROOT_PATH, 'code'))
 
 LISTING_RE = compile(r'\$LIST\((.+)\)')
 EXEC_RE = compile(r'\$EXEC\((.+)\)')
-
+TILDE_RE = compile(r'(~)(.+?)(~)')
+TILDE_SUB = r'<span id="chighlight">\2</span>'
 
 def copy(infn):
   print 'copying ' + infn
@@ -53,7 +54,13 @@ def do_list(arg):
   with open(fn) as listing:
     return '<!-- listing of {} -->\n {}'.format(
         arg,
-        get_div(listing.read()))
+        get_div(
+          TILDE_RE.sub(
+            TILDE_SUB,
+            listing.read()
+          )
+        )
+    )
 
 def do_exec(arg):
 

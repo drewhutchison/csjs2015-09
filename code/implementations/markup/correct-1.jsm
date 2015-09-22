@@ -15,7 +15,7 @@ var solution = function(pirates) {
       current_pirate = pirates[current_pirate];
     } else {
       // otherwise, we're done
-<span id="chighlight">      return spoken.length - spoken.indexOf(current_pirate);</span>
+      ~return spoken.length - spoken.indexOf(current_pirate);~
     };
 
   };
