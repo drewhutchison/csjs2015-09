@@ -3,7 +3,7 @@
 from os.path import dirname, realpath, abspath, join
 from os import chdir, getcwd
 from glob import glob
-from re import compile
+from re import compile, DOTALL
 from subprocess import check_output
 
 ROOT_PATH = abspath(join(dirname(realpath(__file__)), '../..'))
@@ -13,7 +13,7 @@ CODE_PATH = abspath(join(ROOT_PATH, 'code'))
 
 LISTING_RE = compile(r'\$LIST\((.+)\)')
 EXEC_RE = compile(r'\$EXEC\((.+)\)')
-TILDE_RE = compile(r'(~)(.+?)(~)')
+TILDE_RE = compile(r'(~)(.+?)(~)', DOTALL)
 TILDE_SUB = r'<span id="chighlight">\2</span>'
 
 def copy(infn):
