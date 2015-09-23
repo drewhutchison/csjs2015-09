@@ -15,6 +15,8 @@ LISTING_RE = compile(r'\$LIST\((.+)\)')
 EXEC_RE = compile(r'\$EXEC\((.+)\)')
 TILDE_RE = compile(r'(~)(.+?)(~)', DOTALL)
 TILDE_SUB = r'<span id="chighlight">\2</span>'
+LT_RE = compile(r'<')
+LT_SUB = r'&lt;'
 
 def copy(infn):
   print 'copying ' + infn
@@ -57,7 +59,10 @@ def do_list(arg):
         get_div(
           TILDE_RE.sub(
             TILDE_SUB,
-            listing.read()
+            LT_RE.sub(
+              LT_SUB,
+              listing.read()
+            )
           )
         )
     )
